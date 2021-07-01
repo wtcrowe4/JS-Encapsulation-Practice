@@ -26,18 +26,14 @@ async function main() {
     // Attach event listener to the 'Name' input
     let nameInput = document.querySelector('.name-input');
     nameInput.addEventListener('input', (e) => {
-        cart.selectedSandwich.name = e.target.value
-        cart.saveSelectedSandwich()
-        cart.render()
+        cart.changeSelectedSandwichName(e.target.value)
     })
 
     // Attach event listeners to the radio inputs for selecting a type of bread
     let breadRadios = document.querySelectorAll('.bread-radio')
     breadRadios.forEach(radioInput => {
         radioInput.addEventListener('click', () => {
-            cart.selectedSandwich.bread = radioInput.value
-            cart.saveSelectedSandwich()
-            cart.render()
+            cart.changeSelectedSandwichBread(radioInput.value)
         })
     })
 }

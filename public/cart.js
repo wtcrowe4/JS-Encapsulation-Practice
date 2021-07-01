@@ -109,7 +109,7 @@ const cart = {
     // Runs when the user clicks 'Delete' on a sandwich card
     async deleteSandwich(sandwich) {
         // Can't delete the last sandwich in the cart
-        if (items.length === 1) {
+        if (this.items.length === 1) {
             return
         }
 
@@ -119,11 +119,11 @@ const cart = {
         })
 
         // Remove the sandwich locally
-        items = items.filter(x => x !== sandwich)
-        if (selectedSandwich.id === sandwich.id) {
-            cart.selectSandwich(items[0])
+        this.items = this.items.filter(x => x !== sandwich)
+        if (this.selectedSandwich.id === sandwich.id) {
+            this.selectSandwich(this.items[0])
         } else {
-            cart.render()
+            this.render()
         }
     },
 
@@ -150,6 +150,18 @@ const cart = {
 
         cart.items.push(newSandwich)
         cart.selectSandwich(newSandwich)
+    },
+
+    changeSelectedSandwichName(value) {
+        this.selectedSandwich.name = value
+        this.saveSelectedSandwich()
+        this.render()
+    },
+
+    changeSelectedSandwichBread(value) {
+        this.selectedSandwich.bread = value
+        this.saveSelectedSandwich()
+        this.render()
     }
 
 }
