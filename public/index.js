@@ -5,14 +5,14 @@ async function main() {
     let [fetchedIngredients, fetchedCart] = await getAll(`http://localhost:3001/ingredients`, `http://localhost:3001/cart`)
 
     // Save what we fetched to global variables;
-    ingredients = fetchedIngredients
+    ingredientList.ingredients = fetchedIngredients
     cart = fetchedCart
 
     // Select the first sandwich on page load
     selectSandwich(cart[0])
 
     // Display the ingredients we fetched
-    renderIngredientList();
+    ingredientList.render();
 
     // Display the sandwiches we fetched
     renderCart();

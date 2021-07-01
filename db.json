@@ -7,7 +7,6 @@
       "ingredients": [
         "Cheddar Cheese",
         "Mayo",
-        "Ham",
         "Bacon",
         "Lettuce",
         "Tomatoes"
@@ -17,7 +16,9 @@
       "id": 3,
       "name": "Something!",
       "bread": "Sourdough",
-      "ingredients": []
+      "ingredients": [
+        "Ham"
+      ]
     }
   ],
   "ingredients": [
