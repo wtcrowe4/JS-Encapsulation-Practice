@@ -2,21 +2,24 @@
 //  This will be updated after we fetch.
 let cart = [];
 
-// Updates the DOM to display a list of sandwiches from the cart
-function renderSandwichList() {
-    const sandwichList = document.querySelector('.sandwich-list');
+// The sandwich selected in the cart (defaults to the first sandwich)
+let selectedSandwich = null;
 
-    // Empty the sandwichList before adding any content to it.
-    sandwichList.innerHTML = '';
+// Updates the DOM to display a list of sandwiches from the cart
+function renderCart() {
+    const sandwichUl = document.querySelector('.sandwich-list');
+
+    // Empty the sandwichUl before adding any content to it.
+    sandwichUl.innerHTML = '';
 
     cart.forEach((sandwich) => {
-        const sandwichDiv = renderSandwichCard(sandwich);
-        sandwichList.append(sandwichDiv)
+        const sandwichDiv = createSandwichCard(sandwich);
+        sandwichUl.append(sandwichDiv)
     })
 }
 
 // Creates a DIV to display a single sandwich
-function renderSandwichCard(sandwich) {
+function createSandwichCard(sandwich) {
     const sandwichCard = document.createElement('div');
     sandwichCard.className = selectedSandwich.id === sandwich.id ? 'm-3 card border-primary' : 'm-3 card'
     sandwichCard.style.cursor = 'pointer';
@@ -60,7 +63,7 @@ function selectSandwich(sandwich) {
     const nameInput = document.querySelector(`.name-input`)
     nameInput.value = sandwich.name
 
-    renderSandwichList()
+    renderCart()
     renderIngredientList()
 }
 
@@ -118,7 +121,7 @@ async function deleteSandwich(sandwich) {
     if (selectedSandwich.id === sandwich.id) {
         selectSandwich(cart[0])
     } else {
-        renderSandwichList()
+        renderCart()
     }
 }
 

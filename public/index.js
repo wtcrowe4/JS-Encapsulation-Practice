@@ -15,7 +15,7 @@ async function main() {
     renderIngredientList();
 
     // Display the sandwiches we fetched
-    renderSandwichList();
+    renderCart();
 
     // Attach event listener to the 'Add Sandwich' button
     let addButton = document.querySelector('.add-button');
@@ -28,6 +28,7 @@ async function main() {
     nameInput.addEventListener('input', (e) => {
         selectedSandwich.name = e.target.value
         saveSelectedSandwich()
+        renderCart()
     })
 
     // Attach event listeners to the radio inputs for selecting a type of bread
@@ -36,7 +37,7 @@ async function main() {
         radioInput.addEventListener('click', () => {
             selectedSandwich.bread = radioInput.value
             saveSelectedSandwich()
-            renderSandwichList()
+            renderCart()
         })
     })
 }
